@@ -80,9 +80,7 @@ def build_knowledge_graph(documents):
 print("Loading up spacy model...")
 nlp = spacy.load('en_core_web_sm')
 nlp.add_pipe('sentencizer')
-print("Making knowledge graph...")
 documents = chunks  # All chunks of the book
-# knowledge_graph = build_knowledge_graph(documents)
 
 
 # In[10]:
@@ -92,6 +90,7 @@ from langchain_openai import OpenAI, OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 import os
 from dotenv import load_dotenv
+import tiktoken
 
 print("Loading up RAG model...")
 
@@ -118,11 +117,20 @@ rag_chain = LLMChain(llm=llm, prompt=rag_prompt)
 def rag_query(question, k=3):
     relevant_docs = vectorstore.similarity_search(question, k=k)
     context = "\n".join([doc.page_content for doc in relevant_docs])
+
     # Truncate context if it exceeds the maximum token limit
-    max_context_length = 4097 - 256  # Reserve 256 tokens for the completion
-    context_tokens = context.split()
-    if len(context_tokens) > max_context_length:
-        context = " ".join(context_tokens[:max_context_length])
+    encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
+    context_tokens = encoding.encode(context)
+    question_tokens = encoding.encode(question)
+
+    max_tokens = 4097 - 256 - 7 # Reserve 256 tokens for the completion and an additional 7 that I think is coming from the template but unsure
+    max_tokens_minus_question = max_tokens - len(question_tokens)
+    
+    if len(context_tokens) > max_tokens_minus_question:
+        context_tokens = context_tokens[:max_tokens_minus_question]
+        context = encoding.decode(context_tokens)
+
+    print("Number of context tokens: " + str(len(context_tokens)) + ", number of question tokens: " + str(len(question_tokens)))
 
     return rag_chain.run(context=context, question=question)
 
@@ -142,7 +150,7 @@ def get_relevant_triples(question, graph, k=5):
                 relevant_triples.append(f"{entity.text} {edge_data['relation']} {neighbor}")
     return relevant_triples
 
-def krag_query(question, k=3):
+def krag_query(question, knowledge_graph, k=3):
     relevant_docs = vectorstore.similarity_search(question, k=k)
     context = "\n".join([doc.page_content for doc in relevant_docs])
     relevant_triples = get_relevant_triples(question, knowledge_graph)
@@ -163,14 +171,30 @@ Answer:"""
 
 def main():
     print("Program Start")
+    knowledge_graph_input = input("Make knowledge graph? (y/n) ")
+    knowledge_graph = None
+    
+    if(knowledge_graph_input.lower() == "y"):
+        print("Making knowledge graph...")
+        knowledge_graph = build_knowledge_graph(documents)
+    else:
+        print("K-rag declined.")
+    
+    # Main loop of the program
     while True:
         question = input("Enter your question (or 'q' to quit): ")
-        if question == 'q':
+        if (question == 'q'):
             break
-        method = input("Enter 'krag' to use Krag or 'rag' to use Rag: ")
-        if method == 'krag':
-            answer = krag_query(question)
-        elif method == 'rag':
+        method = None
+        
+        if(knowledge_graph_input.lower() == "y"):
+            method = input("Enter 'krag' to use Krag or 'rag' to use Rag: ")
+        else:
+            method = 'rag'
+        
+        if (method == 'krag'):
+            answer = krag_query(question, knowledge_graph)
+        elif (method == 'rag'):
             answer = rag_query(question)
         else:
             print("Invalid method selected.")
