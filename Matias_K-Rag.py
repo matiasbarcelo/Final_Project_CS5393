@@ -123,7 +123,7 @@ def rag_query(question, k=3):
     context_tokens = encoding.encode(context)
     question_tokens = encoding.encode(question)
 
-    max_tokens = 4097 - 256 - 7 # Reserve 256 tokens for the completion and an additional 7 that I think is coming from the template but unsure
+    max_tokens = 4097 - 256 - 10 # Reserve 256 tokens for the completion and an additional 10 that I think is coming from the template but unsure
     max_tokens_minus_question = max_tokens - len(question_tokens)
     
     if len(context_tokens) > max_tokens_minus_question:
