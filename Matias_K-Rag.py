@@ -167,6 +167,22 @@ Answer:"""
     krag_prompt = PromptTemplate(template=krag_template, input_variables=["context", "triples_context", "question"])
     krag_chain = LLMChain(llm=llm, prompt=krag_prompt)
     
+    # Truncate context if it exceeds the maximum token limit
+    encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
+    context_tokens = encoding.encode(context)
+    question_tokens = encoding.encode(question)
+    triples_context_tokens = encoding.encode(triples_context)
+
+    max_tokens = 4097 - 256 - 30 # Reserve 256 tokens for the completion and an additional 10 that I think is coming from the template but unsure
+    max_tokens_minus_question_and_triples_tokens = max_tokens - len(question_tokens) - len(triples_context_tokens)
+    
+    if len(context_tokens) > max_tokens_minus_question_and_triples_tokens:
+        context_tokens = context_tokens[:max_tokens_minus_question_and_triples_tokens]
+        context = encoding.decode(context_tokens)
+
+    print("Number of context tokens: " + str(len(context_tokens)) + ", number of question tokens: " + str(len(question_tokens)) + ", number of triple tokens: " + str(len(question_tokens)))
+
+    
     return krag_chain.run(context=context, triples_context=triples_context, question=question)
 
 def main():
