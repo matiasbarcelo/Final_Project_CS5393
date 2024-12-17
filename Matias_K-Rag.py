@@ -206,13 +206,19 @@ def main():
     # Open the log file in append mode
     log_file = open(f"response_log_{log_number}.txt", "a")
     
+    experiment_mode = input("Experiment Mode? (y/n) ")
+    
+    if(experiment_mode.lower() == 'y'):
+        method = 'both'
+    
     # Main loop of the program
     while True:
         question = input("Enter your question (or 'q' to quit): ")
         if (question == 'q'):
             break
         
-        method = input("Enter 'krag' to use Krag, 'rag' to use Rag, or 'both' to get both answers: ")
+        if (experiment_mode.lower() != 'y'):
+            method = input("Enter 'krag' to use Krag, 'rag' to use Rag, or 'both' to get both answers: ")
         
         if (method == 'krag'):
             answer = krag_query(question, knowledge_graph)
