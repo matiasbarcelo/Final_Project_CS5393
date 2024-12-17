@@ -185,6 +185,8 @@ Answer:"""
     
     return krag_chain.run(context=context, triples_context=triples_context, question=question)
 
+import os
+
 def main():
     print("Program Start")
     knowledge_graph_input = input("Make knowledge graph? (y/n) ")
@@ -196,26 +198,46 @@ def main():
     else:
         print("K-rag declined.")
     
+    # Check the current directory for the number of the log file
+    log_number = 1
+    while os.path.exists(f"response_log_{log_number}.txt"):
+        log_number += 1
+    
+    # Open the log file in append mode
+    log_file = open(f"response_log_{log_number}.txt", "a")
+    
     # Main loop of the program
     while True:
         question = input("Enter your question (or 'q' to quit): ")
         if (question == 'q'):
             break
-        method = None
         
-        if(knowledge_graph_input.lower() == "y"):
-            method = input("Enter 'krag' to use Krag or 'rag' to use Rag: ")
-        else:
-            method = 'rag'
+        method = input("Enter 'krag' to use Krag, 'rag' to use Rag, or 'both' to get both answers: ")
         
         if (method == 'krag'):
             answer = krag_query(question, knowledge_graph)
+            print("Krag Answer:", answer)
+            log_file.write(f"Question: {question}\n")
+            log_file.write(f"Krag Answer: {answer}\n")
         elif (method == 'rag'):
             answer = rag_query(question)
+            print("Rag Answer:", answer)
+            log_file.write(f"Question: {question}\n")
+            log_file.write(f"Rag Answer: {answer}\n")
+        elif (method == 'both'):
+            krag_answer = krag_query(question, knowledge_graph)
+            rag_answer = rag_query(question)
+            print("Krag Answer:", krag_answer)
+            print("Rag Answer:", rag_answer)
+            log_file.write(f"Question: {question}\n")
+            log_file.write(f"Krag Answer: {krag_answer}\n")
+            log_file.write(f"Rag Answer: {rag_answer}\n")
         else:
             print("Invalid method selected.")
             continue
-        print("Answer:", answer)
+    
+    # Close the log file
+    log_file.close()
 
 if __name__ == "__main__":
     main()
