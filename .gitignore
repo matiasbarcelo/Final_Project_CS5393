@@ -1,1 +1,3 @@
 /domain_ner_model
+.env
+/venv

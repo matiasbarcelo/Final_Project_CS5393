@@ -1,0 +1,280 @@
+(base) matiasbarcelo@CAROLs-MacBook-Air Final_Proj_CS5393 % python Matias_K-Rag.py                                              
+Loading up spacy model...
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/__init__.py:30: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/__init__.py:30: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py:90: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import FAISS
+
+with new imports of:
+
+>> from langchain_community.vectorstores import FAISS
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import FAISS
+Loading up RAG model...
+/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py:115: LangChainDeprecationWarning: The class `LLMChain` was deprecated in LangChain 0.1.17 and will be removed in 1.0. Use :meth:`~RunnableSequence, e.g., `prompt | llm`` instead.
+  rag_chain = LLMChain(llm=llm, prompt=rag_prompt)
+Loading up KRAG augmentation...
+Program Start
+Make knowledge graph? (y/n) y
+Making knowledge graph...
+Enter your question (or 'q' to quit): Who killed Robert Baratheon
+Enter 'krag' to use Krag or 'rag' to use Rag: krag
+/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py:170: LangChainDeprecationWarning: The method `Chain.run` was deprecated in langchain 0.1.0 and will be removed in 1.0. Use :meth:`~invoke` instead.
+  return krag_chain.run(context=context, triples_context=triples_context, question=question)
+Traceback (most recent call last):
+  File "/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py", line 205, in <module>
+    main()
+  File "/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py", line 196, in main
+    answer = krag_query(question, knowledge_graph)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py", line 170, in krag_query
+    return krag_chain.run(context=context, triples_context=triples_context, question=question)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain_core/_api/deprecation.py", line 182, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/chains/base.py", line 611, in run
+    return self(kwargs, callbacks=callbacks, tags=tags, metadata=metadata)[
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain_core/_api/deprecation.py", line 182, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/chains/base.py", line 389, in __call__
+    return self.invoke(
+           ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/chains/base.py", line 170, in invoke
+    raise e
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/chains/base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/chains/llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/chains/llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain_core/language_models/llms.py", line 755, in generate_prompt
+    return self.generate(prompt_strings, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain_core/language_models/llms.py", line 950, in generate
+    output = self._generate_helper(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain_core/language_models/llms.py", line 792, in _generate_helper
+    raise e
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain_core/language_models/llms.py", line 779, in _generate_helper
+    self._generate(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain_openai/llms/base.py", line 343, in _generate
+    response = self.client.create(prompt=_prompts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/openai/_utils/_utils.py", line 275, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/openai/resources/completions.py", line 539, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/openai/_base_client.py", line 1280, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/openai/_base_client.py", line 957, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/openai/_base_client.py", line 1061, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4097 tokens, however you requested 4696 tokens (4440 in your prompt; 256 for the completion). Please reduce your prompt; or completion length.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+(base) matiasbarcelo@CAROLs-MacBook-Air Final_Proj_CS5393 % python Matias_K-Rag.py
+Loading up spacy model...
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/__init__.py:30: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/__init__.py:30: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py:90: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import FAISS
+
+with new imports of:
+
+>> from langchain_community.vectorstores import FAISS
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import FAISS
+Loading up RAG model...
+/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py:115: LangChainDeprecationWarning: The class `LLMChain` was deprecated in LangChain 0.1.17 and will be removed in 1.0. Use :meth:`~RunnableSequence, e.g., `prompt | llm`` instead.
+  rag_chain = LLMChain(llm=llm, prompt=rag_prompt)
+Loading up KRAG augmentation...
+Program Start
+Make knowledge graph? (y/n) n
+K-rag declined.
+Enter your question (or 'q' to quit): Who killed Robert Baratheon
+Number of context tokens: 3825, number of question tokens: 6
+/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py:135: LangChainDeprecationWarning: The method `Chain.run` was deprecated in langchain 0.1.0 and will be removed in 1.0. Use :meth:`~invoke` instead.
+  return rag_chain.run(context=context, question=question)
+Answer:  Robert Baratheon was killed by a boar while hunting in the Kingswood. However, some characters in the series believe that he was actually murdered by his wife, Cersei Lannister, and her brother, Jaime Lannister.
+Enter your question (or 'q' to quit): q
+(base) matiasbarcelo@CAROLs-MacBook-Air Final_Proj_CS5393 % python Matias_K-Rag.py
+Loading up spacy model...
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/__init__.py:30: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/__init__.py:30: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py:90: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import FAISS
+
+with new imports of:
+
+>> from langchain_community.vectorstores import FAISS
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import FAISS
+Loading up RAG model...
+/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py:115: LangChainDeprecationWarning: The class `LLMChain` was deprecated in LangChain 0.1.17 and will be removed in 1.0. Use :meth:`~RunnableSequence, e.g., `prompt | llm`` instead.
+  rag_chain = LLMChain(llm=llm, prompt=rag_prompt)
+Loading up KRAG augmentation...
+Program Start
+Make knowledge graph? (y/n) y
+Making knowledge graph...
+Enter your question (or 'q' to quit): Who killed Jon Arryn? 
+Enter 'krag' to use Krag or 'rag' to use Rag: krag
+Number of context tokens: 3825, number of question tokens: 6
+/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py:186: LangChainDeprecationWarning: The method `Chain.run` was deprecated in langchain 0.1.0 and will be removed in 1.0. Use :meth:`~invoke` instead.
+  return krag_chain.run(context=context, triples_context=triples_context, question=question)
+Traceback (most recent call last):
+  File "/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py", line 221, in <module>
+    main()
+  File "/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py", line 212, in main
+    answer = krag_query(question, knowledge_graph)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py", line 186, in krag_query
+    return krag_chain.run(context=context, triples_context=triples_context, question=question)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain_core/_api/deprecation.py", line 182, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/chains/base.py", line 611, in run
+    return self(kwargs, callbacks=callbacks, tags=tags, metadata=metadata)[
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain_core/_api/deprecation.py", line 182, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/chains/base.py", line 389, in __call__
+    return self.invoke(
+           ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/chains/base.py", line 170, in invoke
+    raise e
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/chains/base.py", line 160, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/chains/llm.py", line 126, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/chains/llm.py", line 138, in generate
+    return self.llm.generate_prompt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain_core/language_models/llms.py", line 755, in generate_prompt
+    return self.generate(prompt_strings, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain_core/language_models/llms.py", line 950, in generate
+    output = self._generate_helper(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain_core/language_models/llms.py", line 792, in _generate_helper
+    raise e
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain_core/language_models/llms.py", line 779, in _generate_helper
+    self._generate(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain_openai/llms/base.py", line 343, in _generate
+    response = self.client.create(prompt=_prompts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/openai/_utils/_utils.py", line 275, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/openai/resources/completions.py", line 539, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/openai/_base_client.py", line 1280, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/openai/_base_client.py", line 957, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/openai/_base_client.py", line 1061, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4097 tokens, however you requested 4101 tokens (3845 in your prompt; 256 for the completion). Please reduce your prompt; or completion length.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+(base) matiasbarcelo@CAROLs-MacBook-Air Final_Proj_CS5393 % python Matias_K-Rag.py
+Loading up spacy model...
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/__init__.py:30: UserWarning: Importing PromptTemplate from langchain root module is no longer supported. Please use langchain_core.prompts.PromptTemplate instead.
+  warnings.warn(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/langchain/__init__.py:30: UserWarning: Importing LLMChain from langchain root module is no longer supported. Please use langchain.chains.LLMChain instead.
+  warnings.warn(
+/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py:90: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+
+>> from langchain.vectorstores import FAISS
+
+with new imports of:
+
+>> from langchain_community.vectorstores import FAISS
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.vectorstores import FAISS
+Loading up RAG model...
+/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py:115: LangChainDeprecationWarning: The class `LLMChain` was deprecated in LangChain 0.1.17 and will be removed in 1.0. Use :meth:`~RunnableSequence, e.g., `prompt | llm`` instead.
+  rag_chain = LLMChain(llm=llm, prompt=rag_prompt)
+Loading up KRAG augmentation...
+Program Start
+Make knowledge graph? (y/n) y
+Making knowledge graph...
+Enter your question (or 'q' to quit): Who killed Jon Arryn?
+Enter 'krag' to use Krag or 'rag' to use Rag: krag
+Number of context tokens: 3805, number of question tokens: 6
+/Users/matiasbarcelo/Documents/Advanced_Python_Final_Project/Final_Proj_CS5393/Matias_K-Rag.py:186: LangChainDeprecationWarning: The method `Chain.run` was deprecated in langchain 0.1.0 and will be removed in 1.0. Use :meth:`~invoke` instead.
+  return krag_chain.run(context=context, triples_context=triples_context, question=question)
+Answer:  Poison, Ned suggested quietly. Pycelles sleepy eyes flicked open. The aged maester shifted uncomfortably in his seat. A disturbing thought. We are not the Free Cities, where such things are common. Grand Maester Aethelmure wrote that all men carry murder in their hearts, yet even so, the poisoner is beneath contempt. He fell silent for a moment, his eyes lost in thought. What you suggest is possible, my lord, yet I do not think it likely. Every hedge maester knows the common poisons, and Lord Arryn displayed none of the signs. And the Hand was loved by all. What sort of monster in mans flesh would dare to murder such a noble lord? I have heard it said that poison is a womans weapon. Pycelle stroked his beard thoughtfully. It is said. Women, cravens... and eunuchs. He cleared his throat and spat a thick glob of phelm onto the rushes. Above them, a raven cawed loudly in the rookery. The Lord Varys was born a slave in Lys, did you know? Put not your trust in spiders, my lord. That was scarcely anything Ned needed to be told; there was something about
+Enter your question (or 'q' to quit): Who wants to kill Ned? 
+Enter 'krag' to use Krag or 'rag' to use Rag: krag
+Number of context tokens: 3779, number of question tokens: 7
+Answer:  The Lannisters.
+Enter your question (or 'q' to quit): Who threw Bran out a window?
+Enter 'krag' to use Krag or 'rag' to use Rag: krag
+Number of context tokens: 3804, number of question tokens: 7
+Answer:  Jaime Lannister threw Bran out a window.
+Enter your question (or 'q' to quit): Who threw Bran out a window?
+Enter 'krag' to use Krag or 'rag' to use Rag: rag
+Number of context tokens: 3824, number of question tokens: 7
+Answer:  Jaime Lannister.
+Enter your question (or 'q' to quit): Who wants to kill Ned?
+Enter 'krag' to use Krag or 'rag' to use Rag: rag
+Number of context tokens: 3825, number of question tokens: 6
+Answer:  There are several characters who may want to kill Ned Stark, depending on the context of the scene. In the given context, it seems that Littlefinger and the Lannisters may want to harm or kill Ned for various reasons. Littlefinger may want to harm Ned because he sees him as a threat to his own power and influence. The Lannisters, particularly Cersei and Jaime, may want to harm Ned because he knows about their incestuous relationship and the truth about Joffrey's parentage.
+Enter your question (or 'q' to quit): Who is Marillion?
+Enter 'krag' to use Krag or 'rag' to use Rag: krag
+Number of context tokens: 3806, number of question tokens: 5
+Answer:  Marillion is a singer who is known for his beautiful voice and his ability to entertain kings and high lords. He is also known for being a liar and a manipulator, as he tries to use his charm and wit to get what he wants. He is a minor character in the book series "A Song of Ice and Fire" by George R. R. Martin.
+Enter your question (or 'q' to quit): Who is Marillion? 
+Enter 'krag' to use Krag or 'rag' to use Rag: rag 
+Number of context tokens: 3826, number of question tokens: 5
+Answer:  Marillion is a singer and musician in the A Song of Ice and Fire series by George R. R. Martin. He is known for his beautiful voice and skill with the woodharp. He travels throughout the Seven Kingdoms, performing for lords and ladies, and is often invited to perform at feasts and tournaments. He is also a skilled liar and manipulator, using his charm and wit to get what he wants. He is present at the inn at the crossroads when Catelyn Stark captures Tyrion Lannister, and later travels with her to the Eyrie. He is eventually accused of murdering Lysa Arryn and is imprisoned for the crime.
+Enter your question (or 'q' to quit): Why did Bronn kill Chiggen?
+Enter 'krag' to use Krag or 'rag' to use Rag: krag
+Number of context tokens: 3765, number of question tokens: 9
+Answer:  Bronn killed Chiggen because he was moaning and attracting attention from the enemy, and Bronn believed that Chiggen would have done the same to him if their roles were reversed.
+Enter your question (or 'q' to quit): Why did Bronn kill Chiggen?
+Enter 'krag' to use Krag or 'rag' to use Rag: rag 
+Number of context tokens: 3822, number of question tokens: 9
+Answer:  Bronn killed Chiggen because he was a sellsword and was only loyal to those who paid him. When Tyrion offered him more gold to fight for him instead of Catelyn Stark, Bronn saw it as a better opportunity and killed Chiggen to ensure his own survival.
+Enter your question (or 'q' to quit): Why did Stannis kill Renly? 
+Enter 'krag' to use Krag or 'rag' to use Rag: krag
+Number of context tokens: 3749, number of question tokens: 9
+Answer:  Stannis killed Renly because he saw him as a threat to his claim to the Iron Throne. Renly had declared himself king and had a large army backing him, making him a formidable opponent. Stannis also believed that Renly was being manipulated by the shadowbinder Melisandre, who convinced him to challenge Stannis for the throne. Additionally, Stannis may have been motivated by his own ambition and desire for power.
+Enter your question (or 'q' to quit): Give me the exact part of the book where the king is in Darry.
+Enter 'krag' to use Krag or 'rag' to use Rag: krag
+Number of context tokens: 3786, number of question tokens: 16
+Answer:  The king was not in Darry in the given passage. The passage describes a scene where Tyrion Lannister is being held captive in a sky cell in the Eyrie, and he is dreaming about his father being pushed towards the edge of the cell by a gaoler. The passage also mentions the names of various characters such as Mord, Ser Vardis Egen, and Lady Lysa Arryn. There is no mention of the king being in Darry.
+Enter your question (or 'q' to quit): Where Ned and Robert are on the Kingsroad.
+Enter 'krag' to use Krag or 'rag' to use Rag: krag
+Number of context tokens: 3755, number of question tokens: 10
+Answer:  They are on the Kingsroad, riding south of the main party, on a wide plain with barrows of the First Men.
+Enter your question (or 'q' to quit): Who accompanied Catelyn to the Eyrie?
+Enter 'krag' to use Krag or 'rag' to use Rag: krag
+Number of context tokens: 3771, number of question tokens: 10
+Answer:  Her uncle, Brynden Tully, and her sister's bastard daughter, Mya Stone.
+Enter your question (or 'q' to quit): Who accompanied Catelyn to the Eyrie from the crossroads inn and why?
+Enter 'krag' to use Krag or 'rag' to use Rag: krag
+Number of context tokens: 3764, number of question tokens: 17
+Answer:  Ser Rodrik, Robb, Theon Greyjoy, and Hallis Mollen accompanied Catelyn to the Eyrie from the crossroads inn. They were her son, her husband's ward, and two guardsmen who were tasked with protecting her and her son on their journey.
+Enter your question (or 'q' to quit): 

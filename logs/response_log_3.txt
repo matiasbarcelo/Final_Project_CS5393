@@ -1,0 +1,29 @@
+Question: rg
+Krag Answer: 
+- Subject: Catelyn Stark
+- Predicate: has dreamt
+- Object: Bran being whole again, Arya and Sansa holding hands, Rickon being a babe at her breast, Robb playing with a wooden sword, and Ned smiling in her bed
+- Subject: Catelyn Stark
+- Predicate: is tired of
+- Object: riding, hurting, and duty
+- Subject: Catelyn Stark
+- Predicate: wants
+- Object: to weep and be comforted
+- Subject: Catelyn Stark
+- Predicate: is grateful
+- Object: for having use of her hands
+- Subject: Catelyn Stark
+- Predicate: remembers
+- Object: the scars from the Valyrian steel dagger
+- Subject: Catelyn Stark
+- Predicate: is traveling with
+- Object: twenty of Robb's best men and five lordlings
+- Subject: Catelyn Stark
+- Predicate: has seen
+- Object: bands of mailed men and smoke on the eastern horizon
+- Subject: Catelyn Stark
+- Predicate: is worried about
+- Object: her father's health and the restlessness of her northmen
+- Subject: Catelyn Stark
+- Predicate: is
+Rag Answer:  I'm sorry, I do not understand what you are asking. Can you please provide more context or information?
