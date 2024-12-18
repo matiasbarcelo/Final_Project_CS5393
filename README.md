@@ -1,8 +1,8 @@
 # Final Project: A Song of Ice and Fire Series K-RAG
-**Matias Barcelo Treiyer, Ani Vallaru**
-**Dr. Frank Coyle**
-**CS 5393-004**
-**17 December 2024**
+**Matias Barcelo Treiyer, Ani Vallaru**  
+**Dr. Frank Coyle**  
+**CS 5393-004**  
+**17 December 2024**  
 
 ## How to Run
 1. Have Python version at least 3.10.4 installed
