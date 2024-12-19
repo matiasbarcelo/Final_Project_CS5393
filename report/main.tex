@@ -1,0 +1,77 @@
+\documentclass[a4paper,12pt]{article}
+% Package to make citations superscrit with brackets
+\usepackage[super,square]{natbib}
+% Package to change margin size
+\usepackage{anysize}
+\marginsize{2cm}{2cm}{1cm}{2cm}
+% Package to make headers
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+% Package for highligths
+\usepackage{soul}
+% Colors for the references links
+\usepackage[dvipsnames]{xcolor}
+% Package to link references
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=CadetBlue,
+    filecolor=CadetBlue,      
+    urlcolor=CadetBlue,
+}
+% Package for lorem ipsum
+\usepackage{lipsum}
+% Package for multicolumn
+\usepackage{multicol}
+% Package for removing paragraph identations
+\usepackage{parskip}
+% Package for enumerate
+\usepackage{enumitem}
+% Package for images
+\usepackage{graphicx}
+
+\setlength\columnsep{18pt}
+% Sets bastract
+\renewenvironment{abstract}
+ {\par\noindent\textbf{\abstractname}\ \ignorespaces \\}
+ {\par\noindent\medskip}
+
+
+
+ 
+\begin{document}
+% Makes header
+\pagestyle{fancy}
+\thispagestyle{empty}
+\fancyhead[R]{}
+\fancyhead[L]{}
+% Makes footnotes with an asterisk
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+\begin{center}
+\Large{\textbf{Final Project: A Song of Ice and Fire Series K-RAG}}
+\vspace{0.4cm}
+\normalsize
+\\ Matias Barcelo Treiyer, Anirudh Valluru \\
+\vspace{0.1cm}
+\textit{Southern Methodist University - CS 5393-004 – Advanced Python}
+\medskip
+\normalsize
+\end{center}
+{\color{gray}\hrule}
+\vspace{0.4cm}
+\begin{abstract}
+\input{./abstract.tex}
+\end{abstract}
+{\color{gray}\hrule}
+
+\newpage
+\tableofcontents
+\bigskip
+\input{./sections/1_Introduction.tex}
+\input{./sections/2_Methodology.tex}
+\input{./sections/3_System_Architecture.tex}
+\input{./sections/4_Experimental_Results_and_Analysis.tex}
+\input{./sections/5_Challenges_Faced.tex}
+\input{./sections/6_Future_Improvements.tex}
+\end{document}

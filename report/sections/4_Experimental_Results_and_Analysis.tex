@@ -1,0 +1,52 @@
+{\color{gray}\hrule}
+\begin{center}
+\section{Experimental Results and Analysis}
+\bigskip
+\end{center}
+{\color{gray}\hrule}
+
+\subsection{Testing}
+% Start here Ani. You can just remove lipsum its just placeholder text
+%\lipsum[1-3]
+We began by asking several questions from the "A Song of Ice and Fire" series to both the KRAG model and the RAG model. Each model’s responses were evaluated for correctness, depth, and alignment with canonical facts and speculative ability. The evaluation considered both factual correctness and whether the answers demonstrated deeper insights or contextually relevant elaboration. The fields of questions are as follows:  
+\subsubsection{Basic Factual Recall}
+These questions are simply to ensure that the model can recall basic facts within the text, especially when the questions involve something obscure that is not often discussed by outside information like the show or fans. It is our belief that KRag should answer these better, since they will build relationship graphs based on the knowledge from the books, and have more in depth information. \par
+E.g. \par
+Question: What were Cotter Pyke's feelings on sailing to Hardhome to rescue the wildlings?\par
+Krag Answer:  Cotter Pyke was hesitant to sail to Hardhome to rescue the wildlings, as he believed there was no shelter there and that they would likely perish from cold and starvation. He also mentioned the "screaming caves" and the dangers of the wildlings. However, Jon Snow was angered by this and reminded Cotter that they were still people who needed to be saved.
+> RIGHT
+
+Rag Answer:  Cotter Pyke was hesitant and reluctant to sail to Hardhome to rescue the wildlings. He believed that there was no shelter there except for the caves, which his men called the "screaming caves." He also feared that Mother Mole and her followers would perish there from cold and starvation. However, he was also aware that there were thousands of wildlings, including women and children, who would die if they were not rescued. He was torn between his duty to the Night's Watch and his fear for the safety of his men.
+> RIGHT
+
+Question: What happens to Benfred Tallhart and the Wild Hares?\par
+Krag Answer:  Benfred Tallhart and the Wild Hares are killed by the Magnar of Thenn and his bronze-clad minions in the tunnels beneath the Wall.
+> WRONG
+
+Rag Answer:  Benfred Tallhart and the Wild Hares are captured by the Night's Watch and taken to Castle Black. They are then trained and armed by Jon Snow and sent to various forts along the Wall to help defend against the wildling attacks.
+> WRONG
+
+\subsubsection{Inference}
+These questions involve making conclusions from evidence offered in the story. We are of the belief that these questions should be better answered by KRag than RAG. \par
+E.g \par
+Question: Why does Ramsay Bolton claim, in the pink letter, that he had captured Mance Rayder? Is it truely Ramsay's letter, how did he know, and if so, how did he capture Mance Rayder?\par
+Krag Answer:  Ramsay Bolton claims to have captured Mance Rayder in the pink letter as a way to taunt Jon Snow and the Night's Watch. It is not truly Ramsay's letter, but rather a forgery created by Mance Rayder and his allies in order to trick Jon Snow into helping them rescue "Arya Stark" (who is actually Jeyne Poole, a friend of Sansa Stark's who has been posing as Arya). Mance Rayder was not actually captured by Ramsay, but rather he and his allies staged a fake execution and then escaped.
+> MOSTLY RIGHT
+
+Rag Answer:  It is unclear why Ramsay Bolton would claim to have captured Mance Rayder in the pink letter. Some theories suggest that Ramsay may have been lying in order to provoke Jon Snow into taking action against him, while others believe that Ramsay may have actually captured Mance and is using him as a bargaining chip. It is also possible that the letter was not actually written by Ramsay, but by someone else who is trying to manipulate Jon Snow. The true author of the letter is still a mystery. As for how Mance was captured, it is possible that Ramsay's men were able to capture him during the chaos of the battle at Winterfell, or that he was betrayed by someone in his own camp.
+> MOSTLY RIGHT
+
+\subsubsection{False Assumption Query}
+These questions make a false claim within the question itself, intending to determine if the model will hallucinate based off of the false information offered in the query or if it will correct the questioner. \par
+E.g\par
+Question: Why did Theon fear Shagga?\par
+Krag Answer:  Theon feared Shagga because he was a fierce and unpredictable warrior from the mountains of the Vale, known for his love of violence and brutality.
+> FALSE
+
+Rag Answer:  Theon feared Shagga because he was a fierce and unpredictable warrior from the Hill Tribes of the Vale. Theon was not used to dealing with such wild and savage fighters, and he knew that Shagga and his people were not loyal to any one lord or king. This made them a potential threat to Theon's rule and he feared that they could turn against him at any moment. Additionally, Shagga was known for his brutal and violent tendencies, which made Theon fear for his own safety.
+> FALSE
+
+\subsection{Analysis}
+KRag unfortunately did not do very well when examined. In two fields it performed worse than RAG, the Inference questions and the Basic Factual Recall, much to our surprise. When given basic questions it often misunderstood and delivered an answer way out of left field, often fixated on characters "pledging their swords" to an obscure character called "Inkpots," which neither member knew anything about until further research had been undertaken. Other times, however, when more obscure questions were asked, KRag would likely answer more faithfully. Inference based questions varied in response quality wildly. Whenever given the opportunity, the model would either deliver a rich response, considering multiple connections and factors, or it would deliver something convoluted and hallucinated. Strangely the field it performed better in than the RAG model was False Assumption Query, because oftentimes, the RAG model had responses tainted by shows and outside fan theories, so in multiple cases where both models responded somewhat accurately, KRag would put a greater emphasis on the knowledge generated by the books, and so gave more useful answers. 
+
+\bigskip
