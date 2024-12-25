@@ -7,26 +7,26 @@
 
 \subsection{Future Improvements}
 \subsubsection{Separate Knowledge Graph Construction Script}
-The main Python file takes a minute or so to generate the knowledge graph. There is surely a way that a knowledge graph can be generated, stored, and loaded up in order to avoid this unnecessary wait time.
+The main Python file generates a knowledge graph in each instance of the system. There is likely a way that a knowledge graph can be generated once, stored, and loaded up during in order to avoid the unnecessary wait time of the current implementation.
 
 \subsubsection{Similarity Search Retrieval}
-The system only allows two books to be chunked due to bandwidth issues using OpenAI's API. There is a one million token per minute limit. When encoding 3 books, this exceeds the limit when running the script. There is surely a workaround to save and load an FAISS object, and instead of running all the books at once and exceeding the token per minute limit, running it separately at different times to not overwhelm the network.
+The system only allows two books to be chunked due to bandwidth issues using OpenAI's API. There is a one million token per minute limit. When encoding three books, the limit is exceeded. There is surely a workaround which involves saving and loading an FAISS object. Instead of running all the books at once and exceeding the token limit, a viable option could be loading and saving a FAISS object at different times to not overwhelm the network. This object, similar to the prior improvement, could be built once, and then loaded up instead of generated during each instance of the system.
 
 \subsubsection{Chunk Splitting/Token Shortening Method}
-The manner which the system splits chunks is brutish. The NER splits chunks according to sentences, and sentences are cut off unfinished in the current implementation due to chunks merely being a number of characters. A better implementation would have sentences not cut off but not exceed a character limit.
+The manner in which the system splits chunks is brutish. The NER splits chunks according to sentences, and sentences are cut off unfinished in the current implementation due to chunks merely being a number of characters. A better implementation would have sentences not cut off while not exceeding a character limit.
 \par
 
-A similar improvement could be made to the method which token control brutishly cuts context in order to meet token quotas both RAG and KRAG architectures. The current implementation cuts off tokens from start to the number of tokens needed to meet quota. A better implementation would retrieve different numbers of "K" chunks using similarity search, starting at one until reaching the quota limit for tokens, and if 1 chunk be too large token wise, some sort of token requirement summary method used to capture the idea. Or, if that summary method implemented, perhaps a summary method to summarize the K number of chunks retrieved by similarity search in the first place.
+A similar improvement could be made to the method which token control brutishly cuts context in order to meet token quotas both RAG and KRAG architectures. The current implementation cuts off tokens from start to the number of tokens needed to meet quota. A better implementation would retrieve different numbers of "K" chunks using similarity search, starting at one until reaching the quota limit for tokens, and if a chunk be too large token wise, some sort of token requirement summary method used to capture the idea. Or, if that summary method implemented, perhaps a summary method to summarize the K number of chunks retrieved by similarity search in the first place.
 
 \subsubsection{Automatic Token Control Calculation}
-The current implementation has a static calculation for token control only for the gpt-3.5-turbo model. It would make sense for there to be a dynamic calculation for recognized models.
+The current implementation has a static calculation for token control only for the gpt-3.5-turbo model. It makes sense for there to be a dynamic calculation for future implementations with additional models.
 
 \subsection{Potential Applications}
 \subsubsection{Web Application using RAG or KRAG for Attracting Recruiters and Clients}
-Personal websites are no doubt important for software engineers. A cool feature or gimmick for a personal website, to demonstrate understanding in the AI domain, would be a RAG or KRAG system where any website visitor, hopefully a recruiter or client, can ask details about a candidates career and personal life.
+Personal websites are important assets for software engineers. A nice feature for a personal website, to demonstrate understanding in the AI domain, would be a RAG or KRAG system where any website visitor (hopefully a recruiter or client) can ask details about a candidates career and personal life.
 
 \subsubsection{Business/Legal Application}
-There are still big legal and business use questions in artificial intelligence related to copyright infringement and privacy. Companies do not want to feed classified or competitive information to LLMs for their private use. If courts hold OpenAI liable for training their models illegally and for replicating copyrighted media, there is no telling what the effects of that might be. There is also a time limit for each models training, e.g. many of OpenAI's GPT models only know information up to a certain date. 
+There are still big legal and business use questions in artificial intelligence related to copyright infringement and privacy. Companies do not want to feed classified or competitive information to LLMs for their private use. AI companies could be held liable for training their models outside of fair use and for replicating copyrighted media, which could change the landscape. There is also a time limit for each model's training, e.g. many of OpenAI's GPT models only know information up to a certain date. 
 \par
 
-Thus, people who know how to integrate LLMs locally or at a company level using RAG or KRAG, that know how to feed a model more information that it might not already "know", may become a sought after talent in the market. User friendly software that streamlines local LLMs using RAG and/or KRAG may also be attractive ventures.
+Thus, people who know how to integrate LLMs locally or at a company level using RAG or KRAG, that know how to feed a model more information that it might not already "know", may have a sought after skill in the job market. User friendly software that streamlines local LLMs using RAG and/or KRAG may also be attractive ventures for business applications.

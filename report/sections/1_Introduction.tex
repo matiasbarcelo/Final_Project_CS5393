@@ -6,8 +6,8 @@
 \end{center}
 {\color{gray}\hrule}
 
-Given a markdown file at the beginning of the project by class professor Dr. Coyle, team members used the example code in this markdown file to complete the project with some slight modifications to fit needs. This code, naturally in Python in an Advanced Python course, required packages for the spacy, networkx, matplotlib.pyplot, FAISS, and langchain modules. In addition to the modules required in the example code, members added the tiktoken module for token control. In addition to installing modules, to use the system developed for this report a user must also include an OpenAI API key in the environment for use of their gpt-3.5 model.\par
-Members chose the \textit{A Song of Fire and Ice} due to a specific member's familiarity to the series and due to its ease of availability online in the ".pdf" format. These books include: \bigskip
+Given a markdown file at the beginning of the project by Professor Coyle, team members used the example code in the markdown file to complete the project with only slight modifications. This example code, written in Python, required packages for spacy, networkx, matplotlib.pyplot, FAISS, and langchain modules. In addition to these modules, members added the tiktoken module for token control. Notably, for home use, the system developed for this report must include an OpenAI API key in the environment for use of OpenAI's gpt-3.5 model.\par
+The team chose the \textit{Song of Fire and Ice} series due to a specific team member's familiarity to the series and due to its ease of availability online in the ".pdf" format. Books in the series include: \bigskip
 
 \begin{enumerate}[label=\arabic*.]
     \item \textbf{A Game of Thrones} (1996)
@@ -17,6 +17,5 @@ Members chose the \textit{A Song of Fire and Ice} due to a specific member's fam
     \item \textbf{A Dance with Dragons} (2011)
 \end{enumerate}
 \bigskip
-
-These books must be in ".txt" format in the same directory as all other components in order for the developed system to function, so ".pdf" files need to be converted prior to programming the model. Furthermore, due to bandwidth limitations, only two books could be selected at a time for chunking per instance.
+A user must ensure these books are in .txt format in a separate directory named "sif\_text" (or a directory with any other name as long as the directory variable in FinalProject.py is changed) along with the source code for the developed system to function. So, ".pdf" files must be converted prior to programming the model. Furthermore, due to bandwidth/token limitations, only two books can be selected at a time for chunking per instance of system.
 \bigskip

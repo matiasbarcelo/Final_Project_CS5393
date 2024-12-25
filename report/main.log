@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.16)  24 DEC 2024 17:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.16)  24 DEC 2024 21:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -390,7 +390,7 @@ Overfull \hbox (5.52461pt too wide) in paragraph at lines 13--14
 <images/example_kg.png, id=183, 476.982pt x 360.6273pt>
 File: images/example_kg.png Graphic file (type png)
 <use images/example_kg.png>
-Package pdftex.def Info: images/example_kg.png  used on input line 30.
+Package pdftex.def Info: images/example_kg.png  used on input line 29.
 (pdftex.def)             Requested size: 266.03474pt x 201.141pt.
 
 
@@ -398,7 +398,7 @@ Package pdftex.def Info: images/example_kg.png  used on input line 30.
 <images/15_chunk_got_kg.png, id=191, 476.982pt x 360.6273pt>
 File: images/15_chunk_got_kg.png Graphic file (type png)
 <use images/15_chunk_got_kg.png>
-Package pdftex.def Info: images/15_chunk_got_kg.png  used on input line 41.
+Package pdftex.def Info: images/15_chunk_got_kg.png  used on input line 42.
 (pdftex.def)             Requested size: 266.03474pt x 201.141pt.
 ) (./sections/3_System_Architecture.tex
 
@@ -433,7 +433,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  79i,12n,93p,1297b,482s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (10 pages, 356502 bytes).
+Output written on main.pdf (10 pages, 356579 bytes).
 PDF statistics:
  249 PDF objects out of 1000 (max. 8388607)
  224 compressed objects within 3 object streams
